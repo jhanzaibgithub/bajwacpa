@@ -1,0 +1,12 @@
+<!doctype html><html <?php language_attributes(); ?>><head><meta charset="<?php bloginfo( 'charset' ); ?>"><meta name="viewport" content="width=device-width,initial-scale=1"><script>document.documentElement.classList.add('js')</script><?php wp_head(); ?></head>
+<body <?php body_class(); ?>><?php wp_body_open(); ?><div class="site-loader" data-site-loader aria-hidden="true"><div class="site-loader__mark"><span class="site-loader__logo"><img src="<?php echo esc_url(get_theme_file_uri('assets/images/bajwa-logo.png')); ?>" width="250" height="68" alt=""></span><i aria-hidden="true"></i></div><div class="site-loader__accent" aria-hidden="true"><span></span><span></span><span></span></div><p>Loading your next page</p></div><div class="scroll-progress" aria-hidden="true"></div><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+	<div class="utility"><div class="container utility__inner"><span>Trusted tax &amp; accounting advice across the GTA</span><div><a href="tel:4169070568">416-907-0568</a><span aria-hidden="true">•</span><a href="mailto:info@bajwacpa.com">info@bajwacpa.com</a></div></div></div>
+	<div class="container navbar">
+		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Bajwa CPA home"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bajwa-logo.png' ) ); ?>" width="250" height="68" alt="Bajwa CPA Professional Corporation"></a>
+		<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false"><span></span><span></span><span></span><span class="screen-reader-text">Open menu</span></button>
+		<nav class="primary-nav" aria-label="Primary navigation"><?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_id' => 'primary-menu', 'fallback_cb' => 'bajwa_fallback_menu' ) ); ?></nav>
+		<a class="button button--navy navbar__cta" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Let's talk</a>
+	</div>
+</header>
+<?php function bajwa_fallback_menu() { echo '<ul id="primary-menu" class="menu"><li><a href="' . esc_url( home_url('/') ) . '">Home</a></li><li><a href="' . esc_url( home_url('/about-us/') ) . '">About Us</a></li><li><a href="' . esc_url( get_post_type_archive_link('service') ) . '">Services</a></li><li><a href="' . esc_url( home_url('/tax-checklists/') ) . '">Tax Checklists</a></li><li><a href="' . esc_url( home_url('/contact/') ) . '">Contact</a></li></ul>'; } ?>

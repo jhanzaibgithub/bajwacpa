@@ -1,0 +1,156 @@
+{
+    "corporate-tax-return": {
+        "source_url": "https://bajwacpa.com/service/corporate-tax-return-2/",
+        "source_title": "Corporate Tax Return",
+        "saved_title": "Corporate Tax Return",
+        "title_match": true,
+        "source_words": 379,
+        "saved_words": 379,
+        "source_sha256": "aea85ac4c87e99bb69cdd4c40f72fd8822da62aee1f997f16248b69271a92d27",
+        "saved_sha256": "aea85ac4c87e99bb69cdd4c40f72fd8822da62aee1f997f16248b69271a92d27",
+        "word_for_word_match": true
+    },
+    "business-tax-return": {
+        "source_url": "https://bajwacpa.com/service/business-tax-return-2/",
+        "source_title": "Business Tax Return",
+        "saved_title": "Business Tax Return",
+        "title_match": true,
+        "source_words": 254,
+        "saved_words": 254,
+        "source_sha256": "c9a75ac8ec58da6c985ed2f6d5ebf44b2f6dbf6e5c7b9798004cac16ba34cfad",
+        "saved_sha256": "c9a75ac8ec58da6c985ed2f6d5ebf44b2f6dbf6e5c7b9798004cac16ba34cfad",
+        "word_for_word_match": true
+    },
+    "bookkeeping": {
+        "source_url": "https://bajwacpa.com/service/bookkeeping-2/",
+        "source_title": "Bookkeeping",
+        "saved_title": "Bookkeeping",
+        "title_match": true,
+        "source_words": 590,
+        "saved_words": 590,
+        "source_sha256": "db524b685cfc591369b7f2292175a133a35c01802cfa751af01d159ca4b75df0",
+        "saved_sha256": "db524b685cfc591369b7f2292175a133a35c01802cfa751af01d159ca4b75df0",
+        "word_for_word_match": true
+    },
+    "personal-tax-return": {
+        "source_url": "https://bajwacpa.com/service/personal-tax-return-2/",
+        "source_title": "Personal Tax Return",
+        "saved_title": "Personal Tax Return",
+        "title_match": true,
+        "source_words": 300,
+        "saved_words": 300,
+        "source_sha256": "42bdc55eb820aef22ade144227f14f3a4ff300a335e04b36fcf52196f77f00c8",
+        "saved_sha256": "42bdc55eb820aef22ade144227f14f3a4ff300a335e04b36fcf52196f77f00c8",
+        "word_for_word_match": true
+    },
+    "non-resident-tax-returns": {
+        "source_url": "https://bajwacpa.com/service/non-resident-tax-returns/",
+        "source_title": "Non-Resident Tax Returns",
+        "saved_title": "Non-Resident Tax Returns",
+        "title_match": true,
+        "source_words": 275,
+        "saved_words": 275,
+        "source_sha256": "df9689cdf58829a61d84e08071765b5f069b60dd75c82d61a7dccb89f9469046",
+        "saved_sha256": "df9689cdf58829a61d84e08071765b5f069b60dd75c82d61a7dccb89f9469046",
+        "word_for_word_match": true
+    },
+    "real-estate-tax-returns": {
+        "source_url": "https://bajwacpa.com/service/real-estate-tax-returns/",
+        "source_title": "Real Estate Tax Returns",
+        "saved_title": "Real Estate Tax Returns",
+        "title_match": true,
+        "source_words": 260,
+        "saved_words": 260,
+        "source_sha256": "1d7ccb91d521b774e3114a53a3b1c0faff2145c07c7a570bf0c3d71ed29812dc",
+        "saved_sha256": "1d7ccb91d521b774e3114a53a3b1c0faff2145c07c7a570bf0c3d71ed29812dc",
+        "word_for_word_match": true
+    },
+    "trust-estate-tax-return": {
+        "source_url": "https://bajwacpa.com/service/trust-estate-tax-return-2/",
+        "source_title": "Trust & Estate Tax Return",
+        "saved_title": "Trust & Estate Tax Return",
+        "title_match": true,
+        "source_words": 440,
+        "saved_words": 440,
+        "source_sha256": "1ad46d2033094632e04ba41de1ed22440a2cea036297664e94f22f244b46dc57",
+        "saved_sha256": "1ad46d2033094632e04ba41de1ed22440a2cea036297664e94f22f244b46dc57",
+        "word_for_word_match": true
+    },
+    "incorporation-business-registration": {
+        "source_url": "https://bajwacpa.com/service/incorporation-business-registration/",
+        "source_title": "Incorporation & Business Registration",
+        "saved_title": "Incorporation & Business Registration",
+        "title_match": true,
+        "source_words": 196,
+        "saved_words": 196,
+        "source_sha256": "2702be2b610b7f11de85025cbad2783280af8c577abddd4dfd1229f904a30b0b",
+        "saved_sha256": "2702be2b610b7f11de85025cbad2783280af8c577abddd4dfd1229f904a30b0b",
+        "word_for_word_match": true
+    },
+    "financial-statements": {
+        "source_url": "https://bajwacpa.com/service/financial-statements-2/",
+        "source_title": "Financial Statements",
+        "saved_title": "Financial Statements",
+        "title_match": true,
+        "source_words": 269,
+        "saved_words": 269,
+        "source_sha256": "614cc7a9a26e840ee7e6575ebcf07a535cf06e4eb41477f0b66f5b821e400175",
+        "saved_sha256": "614cc7a9a26e840ee7e6575ebcf07a535cf06e4eb41477f0b66f5b821e400175",
+        "word_for_word_match": true
+    },
+    "tax-planning": {
+        "source_url": "https://bajwacpa.com/service/tax-planning-2/",
+        "source_title": "Tax Planning",
+        "saved_title": "Tax Planning",
+        "title_match": true,
+        "source_words": 297,
+        "saved_words": 297,
+        "source_sha256": "c2985cf32273f83b914c99aaf672bcbd77402aaece71d32493113411532bcca9",
+        "saved_sha256": "c2985cf32273f83b914c99aaf672bcbd77402aaece71d32493113411532bcca9",
+        "word_for_word_match": true
+    },
+    "budgeting-forecasting": {
+        "source_url": "https://bajwacpa.com/service/budgeting-forecasting/",
+        "source_title": "Budgeting & Forecasting",
+        "saved_title": "Budgeting & Forecasting",
+        "title_match": true,
+        "source_words": 229,
+        "saved_words": 229,
+        "source_sha256": "5cbf585297db871e53cf2e46d2a33996079cd5f0f1ed898f0fce05ee3c98a754",
+        "saved_sha256": "5cbf585297db871e53cf2e46d2a33996079cd5f0f1ed898f0fce05ee3c98a754",
+        "word_for_word_match": true
+    },
+    "business-consulting": {
+        "source_url": "https://bajwacpa.com/service/business-consulting/",
+        "source_title": "Business Consulting",
+        "saved_title": "Business Consulting",
+        "title_match": true,
+        "source_words": 356,
+        "saved_words": 356,
+        "source_sha256": "5e01f2435b1909a468efef94b5ec3f2ec25c12e6fa13437fddb3b43c1deadb17",
+        "saved_sha256": "5e01f2435b1909a468efef94b5ec3f2ec25c12e6fa13437fddb3b43c1deadb17",
+        "word_for_word_match": true
+    },
+    "professional-corporations": {
+        "source_url": "https://bajwacpa.com/",
+        "source_title": "Professional Corporations",
+        "saved_title": "Professional Corporations",
+        "title_match": true,
+        "source_words": 77,
+        "saved_words": 77,
+        "source_sha256": "25bbe344372c9829868c692651f8c52374a9db308bb2a6cee95338a522390454",
+        "saved_sha256": "25bbe344372c9829868c692651f8c52374a9db308bb2a6cee95338a522390454",
+        "word_for_word_match": true
+    },
+    "hst-new-residential-rental-property-rebate": {
+        "source_url": "https://bajwacpa.com/",
+        "source_title": "GST/HST New Residential Rental Property Rebate",
+        "saved_title": "GST/HST New Residential Rental Property Rebate",
+        "title_match": true,
+        "source_words": 56,
+        "saved_words": 56,
+        "source_sha256": "627938a945c4de7134893b829f9ae4ec4ff9120cd7a55d72b740e3f9f43c7fc5",
+        "saved_sha256": "627938a945c4de7134893b829f9ae4ec4ff9120cd7a55d72b740e3f9f43c7fc5",
+        "word_for_word_match": true
+    }
+}

@@ -1,0 +1,1 @@
+<?php get_header(); the_post(); $intro = has_excerpt() ? get_the_excerpt() : 'Clear, practical guidance shaped around your financial goals.'; ?><main id="main"><?php bajwa_page_header( array( 'intro' => $intro ) ); ?><article class="section page-content"><div class="container prose"><?php the_content(); ?></div></article></main><?php get_footer(); ?>

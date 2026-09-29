@@ -1,0 +1,1 @@
+<?php get_header();the_post();$image=get_the_post_thumbnail_url(get_the_ID(),'full')?:get_theme_file_uri('assets/images/service-books.jpg');require get_theme_file_path('inc/checklist-view.php');get_footer();

@@ -1,0 +1,1 @@
+<?php get_header(); ?><main id="main"><section class="error-page"><div class="container"><p class="eyebrow">404</p><h1>That page is no longer here.</h1><p>Return home or explore our tax and accounting services.</p><a class="button button--gold" href="<?php echo esc_url(home_url('/')); ?>">Back to homepage</a></div></section></main><?php get_footer(); ?>
