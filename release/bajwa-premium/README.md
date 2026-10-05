@@ -15,6 +15,8 @@ Setup enables `/%postname%/` permalinks when the site does not already have a pe
 ## Edit pages and sections
 
 - Use the normal WordPress block editor for page, service and post content.
+- The Home, About Us, Contact and Tax Checklists designs are stored in each page's editor as one Custom HTML block per section. Edit the text, links or images in a block (use the block's Preview to check it), or move, duplicate or delete sections. Changes appear on the site after Update, and page revisions keep earlier versions.
+- Live theme features are inserted with shortcodes: `[bajwa_service_carousel]`, `[bajwa_service_list]` and `[bajwa_contact_form]`. The homepage FAQ search markup (FAQPage schema) is generated from the FAQ items on the page, so edited questions stay in sync.
 - Use Featured Image to replace the designed page-header image.
 - Use the Bajwa Page Hero & Design panel to edit the eyebrow, hero heading and introduction.
 - Use Additional section HTML for section-by-section HTML or shortcodes. It renders before the global consultation section.

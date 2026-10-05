@@ -130,27 +130,5 @@
         "source_sha256": "5e01f2435b1909a468efef94b5ec3f2ec25c12e6fa13437fddb3b43c1deadb17",
         "saved_sha256": "5e01f2435b1909a468efef94b5ec3f2ec25c12e6fa13437fddb3b43c1deadb17",
         "word_for_word_match": true
-    },
-    "professional-corporations": {
-        "source_url": "https://bajwacpa.com/",
-        "source_title": "Professional Corporations",
-        "saved_title": "Professional Corporations",
-        "title_match": true,
-        "source_words": 77,
-        "saved_words": 77,
-        "source_sha256": "25bbe344372c9829868c692651f8c52374a9db308bb2a6cee95338a522390454",
-        "saved_sha256": "25bbe344372c9829868c692651f8c52374a9db308bb2a6cee95338a522390454",
-        "word_for_word_match": true
-    },
-    "hst-new-residential-rental-property-rebate": {
-        "source_url": "https://bajwacpa.com/",
-        "source_title": "GST/HST New Residential Rental Property Rebate",
-        "saved_title": "GST/HST New Residential Rental Property Rebate",
-        "title_match": true,
-        "source_words": 56,
-        "saved_words": 56,
-        "source_sha256": "627938a945c4de7134893b829f9ae4ec4ff9120cd7a55d72b740e3f9f43c7fc5",
-        "saved_sha256": "627938a945c4de7134893b829f9ae4ec4ff9120cd7a55d72b740e3f9f43c7fc5",
-        "word_for_word_match": true
     }
 }

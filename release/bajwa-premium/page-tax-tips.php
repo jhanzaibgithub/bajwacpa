@@ -1,4 +1,10 @@
-<?php get_header(); the_post(); ?>
-<main id="main"><?php bajwa_page_header( array( 'eyebrow' => 'Tax resources', 'title' => 'Tax Tips', 'intro' => 'A practical preparation guide to help you organize records, identify common deductions and arrive ready for tax season.' ) ); ?>
-<section class="section document-section"><div class="container document-layout"><div class="document-copy"><p class="eyebrow">Make tax preparation successful</p><h2>Prepare with confidence.</h2><p class="lead">A well-organized tax file saves time, reduces follow-up and helps ensure important information is not missed.</p><div class="tip-stack"><div><span>01</span><p><strong>Collect income records</strong>Gather tax slips and records for employment, investments, rentals and self-employment.</p></div><div><span>02</span><p><strong>Organize eligible expenses</strong>Keep clear supporting records for credits, deductions and business expenses.</p></div><div><span>03</span><p><strong>Review important changes</strong>Note changes to residency, family status, property or business activity.</p></div></div></div><article class="download-card"><div class="download-card__preview"><span class="document-lines"></span><strong>Tax<br>Tips</strong><small>Preparation resource</small></div><div class="download-card__body"><p class="eyebrow">PDF resource</p><h2>Tax Tips</h2><p>Download the existing Bajwa CPA preparation guide for a convenient reference.</p><a class="button button--gold" href="<?php echo esc_url(get_theme_file_uri('assets/documents/tax-tips.pdf')); ?>" download>Download PDF <span aria-hidden="true">↓</span></a><small>PDF · Approximately 2 MB</small></div></article></div></section>
-<section class="section resource-next"><div class="container resource-next__inner"><div><p class="eyebrow">Next resource</p><h2>Know the dates that matter.</h2></div><a class="button button--navy" href="<?php echo esc_url(home_url('/tax-filing-deadlines/')); ?>">View filing deadlines <?php echo bajwa_icon('arrow'); ?></a></div></section></main><?php get_footer(); ?>
+<?php
+/**
+ * Template Name: Tax Tips
+ */
+get_header(); the_post(); ?>
+<main id="main">
+	<?php bajwa_page_header( array( 'eyebrow' => 'Tax resources', 'title' => get_the_title(), 'intro' => bajwa_clean_excerpt( 'Practical, year-round tax tips for individuals, employees, business owners and students.' ) ) ); ?>
+	<?php bajwa_render_designed_body( 'tips' ); ?>
+</main>
+<?php get_footer(); ?>

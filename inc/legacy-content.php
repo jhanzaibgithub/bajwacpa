@@ -3,11 +3,53 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /** One-time migration of client-owned copy from the previous Bajwa CPA website. */
 function bajwa_import_legacy_site_content() {
-	if ( get_option( 'bajwa_legacy_content_version' ) >= 3 ) { return; }
-	$about = get_page_by_path( 'about-us', OBJECT, 'page' );
-	if ( $about ) {
-		wp_update_post( array( 'ID' => $about->ID, 'post_content' => '<p class="lead">We want individuals, corporations, entrepreneurs and everyone in between across the GTA to feel that their tax and accounting professionals value their time, money and desire to live financially secure.</p><h2>The team at Bajwa CPA</h2><p>We provide personalized solutions for a wide range of accounting needs. Our reputation and long-standing client relationships have been built through hard work, integrity and professional talent.</p><p>As members of the Chartered Professional Accountants association, we stay current with changing laws and professional standards. Our pricing is fixed, our support is available year-round and we take every client deadline seriously.</p><h2>Why clients choose Bajwa CPA</h2><p>Our clients trust us with their livelihoods and financial well-being, and we take that responsibility seriously. We keep learning, sharpen our skills and offer a broad range of services so clients can receive coordinated advice from one professional team.</p><h2>We take our role seriously</h2><p>Chartered accountants and tax professionals play an important role in the community. We want every client who walks through our doors to feel that we care about their success and want what is best for them.</p>' ) );
-		update_post_meta( $about->ID, '_bajwa_content_source', 'https://bajwacpa.com/about/' );
+	if ( get_option( 'bajwa_legacy_content_version' ) >= 5 ) { return; }
+	$pages_file = BAJWA_PREMIUM_DIR . 'data/live-pages.json';
+	if ( is_readable( $pages_file ) ) {
+		$source_pages = json_decode( file_get_contents( $pages_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$page_ids = array();
+		foreach ( (array) $source_pages as $source ) {
+			$slug = sanitize_title( $source['slug'] ?? '' );
+			if ( ! $slug || in_array( $slug, array( 'test', '404-2' ), true ) ) { continue; }
+			// Match by slug under any parent: setup creates resource pages as children of Tax Resources.
+			$matches = get_posts( array( 'post_type' => 'page', 'name' => $slug, 'post_status' => 'any', 'numberposts' => 1 ) );
+			$existing = $matches ? $matches[0] : null;
+			if ( ! $existing && 'about' === $slug ) { $existing = get_page_by_path( 'about-us', OBJECT, 'page' ); }
+			$payload = array(
+				'post_type' => 'page', 'post_status' => 'publish', 'post_name' => $slug,
+				'post_title' => wp_strip_all_tags( $source['title']['rendered'] ?? '' ),
+				'post_content' => wp_kses_post( ! empty( $source['live_rendered'] ) ? $source['live_rendered'] : ( $source['content']['rendered'] ?? '' ) ),
+				'post_excerpt' => trim( preg_replace( '/\[\/?[a-z_]+[^\]]*\]/i', '', html_entity_decode( wp_strip_all_tags( $source['excerpt']['rendered'] ?? '' ), ENT_QUOTES, 'UTF-8' ) ) ),
+				'menu_order' => (int) ( $source['menu_order'] ?? 0 ),
+			);
+			// Designed pages keep the theme sections (and intro) seeded into their editor content.
+			$is_designed = $existing && get_post_meta( $existing->ID, '_bajwa_designed_content', true );
+			if ( $is_designed ) { unset( $payload['post_excerpt'] ); }
+			if ( $existing && ( $is_designed || '' === trim( wp_strip_all_tags( $payload['post_content'] ) ) ) ) { unset( $payload['post_content'] ); }
+			if ( $existing ) { $payload['ID'] = $existing->ID; $local_id = wp_update_post( $payload ); }
+			else { $local_id = wp_insert_post( $payload ); }
+			if ( $local_id && ! is_wp_error( $local_id ) ) {
+				$page_ids[ (int) $source['id'] ] = (int) $local_id;
+				update_post_meta( $local_id, '_bajwa_content_source', esc_url_raw( $source['link'] ?? '' ) );
+				$source_html = ! empty( $source['live_rendered'] ) ? $source['live_rendered'] : ( $source['content']['rendered'] ?? '' );
+				update_post_meta( $local_id, '_bajwa_source_sha256', hash( 'sha256', trim( preg_replace( '/\s+/u', ' ', html_entity_decode( wp_strip_all_tags( $source_html ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) ) ) );
+			}
+		}
+		foreach ( (array) $source_pages as $source ) {
+			$old_parent = (int) ( $source['parent'] ?? 0 );
+			if ( $old_parent && isset( $page_ids[ (int) $source['id'] ], $page_ids[ $old_parent ] ) ) { wp_update_post( array( 'ID' => $page_ids[ (int) $source['id'] ], 'post_parent' => $page_ids[ $old_parent ] ) ); }
+		}
+	}
+	$posts_file = BAJWA_PREMIUM_DIR . 'data/posts.json';
+	if ( is_readable( $posts_file ) ) {
+		$source_posts = json_decode( file_get_contents( $posts_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		foreach ( (array) $source_posts as $source ) {
+			$slug = sanitize_title( $source['slug'] ?? '' ); if ( ! $slug ) { continue; }
+			$existing = get_page_by_path( $slug, OBJECT, 'post' );
+			$payload = array( 'post_type' => 'post', 'post_status' => 'publish', 'post_name' => $slug, 'post_title' => wp_strip_all_tags( $source['title']['rendered'] ?? '' ), 'post_content' => wp_kses_post( $source['content']['rendered'] ?? '' ), 'post_excerpt' => wp_strip_all_tags( $source['excerpt']['rendered'] ?? '' ), 'post_date' => sanitize_text_field( $source['date'] ?? current_time( 'mysql' ) ) );
+			if ( $existing ) { $payload['ID'] = $existing->ID; $local_id = wp_update_post( $payload ); } else { $local_id = wp_insert_post( $payload ); }
+			if ( $local_id && ! is_wp_error( $local_id ) ) { update_post_meta( $local_id, '_bajwa_content_source', esc_url_raw( $source['link'] ?? '' ) ); }
+		}
 	}
 	$service_content = array(
 		'corporate-tax-return' => '<p>We provide corporate tax preparation and advice for companies across many sectors. By staying current with Canadian tax law, we help corporate clients file accurately, meet deadlines and make informed decisions.</p><h2>Corporate tax services</h2><ul><li>T2 corporate tax return preparation and filing</li><li>Tax schedules, instalments and year-end adjusting entries</li><li>T4 employment and T5 dividend slips</li><li>GST/HST returns and payroll remittances</li><li>Compilation financial statements</li><li>Monthly, quarterly or annual bookkeeping and general ledgers</li><li>Corporate tax planning and tax-minimization strategies</li></ul><h2>Personalized for your business</h2><p>We take time to understand each client’s business and provide professional services in a clear, timely and reliable way.</p>',
@@ -29,6 +71,7 @@ function bajwa_import_legacy_site_content() {
 		$live_content = json_decode( file_get_contents( $live_content_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		foreach ( (array) $live_content as $slug => $entry ) { if ( ! empty( $entry['content'] ) ) { $service_content[ $slug ] = $entry['content']; } }
 	}
+	foreach ( array( 'professional-corporations', 'hst-new-residential-rental-property-rebate' ) as $removed_slug ) { $removed = get_page_by_path( $removed_slug, OBJECT, 'service' ); if ( $removed ) { wp_trash_post( $removed->ID ); } }
 	foreach ( $service_content as $slug => $content ) {
 		$post = get_page_by_path( $slug, OBJECT, 'service' );
 		if ( ! $post ) { continue; }
@@ -37,7 +80,19 @@ function bajwa_import_legacy_site_content() {
 		wp_update_post( $update );
 		$source_url = isset( $live_content[ $slug ]['source_url'] ) ? $live_content[ $slug ]['source_url'] : 'https://bajwacpa.com/service/' . $slug . '/';
 		update_post_meta( $post->ID, '_bajwa_content_source', $source_url );
+		foreach ( array( 'h1' => '_bajwa_h1', 'meta_title' => '_bajwa_seo_title', 'meta_description' => '_bajwa_seo_description' ) as $key => $meta_key ) { if ( ! empty( $live_content[ $slug ][ $key ] ) ) { update_post_meta( $post->ID, $meta_key, $live_content[ $slug ][ $key ] ); } }
 	}
-	update_option( 'bajwa_legacy_content_version', 3 );
+	update_option( 'bajwa_legacy_content_version', 5 );
 }
 add_action( 'admin_init', 'bajwa_import_legacy_site_content' );
+
+function bajwa_service_seo_title( $title ) {
+	if ( is_singular( 'service' ) ) { $seo = get_post_meta( get_queried_object_id(), '_bajwa_seo_title', true ); if ( $seo ) { return $seo; } }
+	return $title;
+}
+add_filter( 'pre_get_document_title', 'bajwa_service_seo_title' );
+
+function bajwa_service_seo_description() {
+	if ( is_singular( 'service' ) ) { $seo = get_post_meta( get_queried_object_id(), '_bajwa_seo_description', true ); if ( $seo ) { echo '<meta name="description" content="' . esc_attr( $seo ) . "\">\n"; } }
+}
+add_action( 'wp_head', 'bajwa_service_seo_description', 1 );

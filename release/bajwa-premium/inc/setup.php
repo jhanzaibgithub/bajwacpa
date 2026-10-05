@@ -71,8 +71,6 @@ function bajwa_run_setup() {
 		'incorporation-business-registration' => array( 'Incorporation & Business Registration', 'Practical help choosing and establishing the right structure for your new business.', '<p>We assist with business name registration, incorporation and initial tax-account setup, and explain the ongoing responsibilities that come with each structure.</p>' ),
 		'financial-statements' => array( 'Financial Statements', 'Clear financial statements that support compliance, lending and better business decisions.', '<p>We prepare compilation financial statements based on management-provided information and help owners understand what their numbers show.</p>' ),
 		'tax-planning' => array( 'Tax Planning', 'Forward-looking strategies for business owners, families and investors.', '<p>Effective planning happens before filing time. We review your structure, timing, compensation and major transactions to identify practical tax-saving opportunities.</p>' ),
-		'professional-corporations' => array( 'Professional Corporations', 'Incorporation and tax guidance for regulated professionals including doctors, dentists, lawyers and consultants.', '<p>We help regulated professionals evaluate and establish professional corporations, coordinate tax registrations and understand their ongoing filing responsibilities.</p>' ),
-		'hst-new-residential-rental-property-rebate' => array( 'GST/HST Rental Property Rebate', 'Guidance for eligible purchasers applying for the GST/HST new residential rental property rebate.', '<p>Investment-property buyers may pay GST/HST at closing and later qualify to apply for a rebate. We help organize the information and prepare the application accurately.</p>' ),
 		'budgeting-forecasting' => array( 'Budgeting & Forecasting', 'Financial plans and forward-looking projections that help owners allocate resources and make confident decisions.', '<p>Budgets define desired results while forecasts estimate likely outcomes. We build practical financial views that help owners monitor performance and plan ahead.</p>' ),
 		'business-consulting' => array( 'Business Consulting', 'Practical advisory support for entrepreneurs making growth, structure and performance decisions.', '<p>From startup through growth, we help owners evaluate opportunities, understand financial implications and make decisions with a clearer view of the business.</p>' ),
 	);
@@ -86,8 +84,6 @@ function bajwa_run_setup() {
 		'service-books.jpg' => array( $service_ids['bookkeeping'] => 'Organized bookkeeping workspace with financial charts and calculator', $service_ids['financial-statements'] => 'Professional financial reporting workspace' ),
 		'service-personal.jpg' => array( $service_ids['personal-tax-return'] => 'Canadian family discussing personal financial planning', $service_ids['non-resident-tax-returns'] => 'Family having a professional financial planning conversation', $service_ids['trust-estate-tax-return'] => 'Multigenerational family discussing estate planning' ),
 		'service-realestate.jpg' => array( $service_ids['real-estate-tax-returns'] => 'Couple and advisor discussing a Canadian real estate investment' ),
-		'card-professional-corporation.jpg' => array( $service_ids['professional-corporations'] => 'Canadian medical professional discussing corporation planning with an advisor' ),
-		'card-hst-rebate.jpg' => array( $service_ids['hst-new-residential-rental-property-rebate'] => 'Modern Canadian condominium investment and property keys' ),
 		'card-forecasting.jpg' => array( $service_ids['budgeting-forecasting'] => 'Business leadership team reviewing financial forecasts' ),
 		'card-consulting.jpg' => array( $service_ids['business-consulting'] => 'Entrepreneur meeting with a strategic business consultant' ),
 		'hero-planning.jpg' => array( $service_ids['tax-planning'] => 'Professional tax planning discussion' ),
@@ -116,6 +112,7 @@ function bajwa_run_setup() {
 	if ( ! get_option( 'permalink_structure' ) ) { update_option( 'permalink_structure', '/%postname%/' ); }
 	bajwa_create_menu( $about, $checklists, $contact, $resources, $resource_ids, $service_ids );
 	bajwa_import_articles();
+	bajwa_seed_designed_pages();
 	update_option( 'bajwa_theme_setup_complete', 1 );
 }
 

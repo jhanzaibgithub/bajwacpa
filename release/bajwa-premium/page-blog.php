@@ -1,4 +1,8 @@
-<?php get_header(); the_post(); ?>
+<?php
+/**
+ * Template Name: Blog
+ */
+get_header(); the_post(); ?>
 <main id="main"><header class="page-hero page-hero--image blog-hero"><div class="page-hero__media"><img class="page-hero__image" src="<?php echo esc_url(get_theme_file_uri('assets/images/blog-insights.jpg')); ?>" srcset="<?php echo esc_url(get_theme_file_uri('assets/images/blog-insights-480.jpg')); ?> 480w, <?php echo esc_url(get_theme_file_uri('assets/images/blog-insights-768.jpg')); ?> 768w, <?php echo esc_url(get_theme_file_uri('assets/images/blog-insights-1280.jpg')); ?> 1280w, <?php echo esc_url(get_theme_file_uri('assets/images/blog-insights.jpg')); ?> 1672w" sizes="100vw" width="1672" height="941" alt="Tax professional reviewing financial insights for a Canadian business audience" fetchpriority="high"><span class="page-hero__overlay"></span></div><div class="container page-hero__content"><p class="eyebrow">Insights from Bajwa CPA</p><h1>Ideas for clearer financial decisions.</h1><p class="page-hero__intro">Practical Canadian tax, accounting and business guidance—explained clearly and written for real decisions.</p><div class="blog-hero__tags"><span>Personal tax</span><span>Business</span><span>Real estate</span><span>Planning</span></div></div></header>
 <section class="section resource-intro"><div class="container resource-lead"><div><p class="eyebrow">Knowledge for better decisions</p><h2>Timely thinking for individuals and business owners.</h2></div><p>Explore perspectives on personal tax, corporate planning, real estate, GST/HST and the financial questions that shape a growing business.</p></div></section>
 <section class="section section--mist blog-library"><div class="container"><div class="blog-toolbar"><p><strong>Latest insights</strong><span>Tax · Accounting · Business</span></p></div><div class="blog-grid">

@@ -41,8 +41,6 @@ foreach ( $services as $slug => $url ) {
 	$report[ $slug ] = array( 'source_url' => $url, 'source_title' => $title, 'saved_title' => $title, 'title_match' => true, 'source_words' => str_word_count( $source_text ), 'saved_words' => str_word_count( $saved_text ), 'source_sha256' => hash( 'sha256', $source_text ), 'saved_sha256' => hash( 'sha256', $saved_text ), 'word_for_word_match' => hash_equals( hash( 'sha256', $source_text ), hash( 'sha256', $saved_text ) ) );
 }
 $homepage_services = array(
-	'professional-corporations' => array( 'Professional Corporations', 'A professional corporation is a corporation that provides professional services and that is regulated by a governing professional body such as Accountants, Chiropractors, Dentists, Doctors, Lawyers, and Pharmacists etc. If you are a professional and you are planning on offering your services through an incorporated business, you will need to setup a professional corporation. We are highly experienced in setting up and filing Incorporation documents as outlined per the governing body that the profession is regulated by.' ),
-	'hst-new-residential-rental-property-rebate' => array( 'GST/HST New Residential Rental Property Rebate', 'Canada Revenue Agency does not grant HST Rebate to homebuyers who have bought the property from builder for investment purposes. Therefore, homebuyers end up paying GST/HST upfront at the time of closing the property. However, homebuyers can apply for the refund of the rebate after the closing takes place and certain other conditions are met.' ),
 );
 foreach ( $homepage_services as $slug => $service_data ) {
 	list( $title, $text ) = $service_data;

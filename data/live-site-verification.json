@@ -1,0 +1,317 @@
+{
+    "generated_at": "2026-09-30T13:35:44+00:00",
+    "pages": {
+        "home": {
+            "url": "https://bajwacpa.com/",
+            "title": "Home",
+            "words": 1521,
+            "sha256": "3c797a701540682707ba15bc603a1341bffe436ddd447fc463b9053fdc544c74",
+            "rendered_html_captured": true
+        },
+        "tax-accounting-services": {
+            "url": "https://bajwacpa.com/tax-accounting-services/",
+            "title": "Tax & Accounting Services",
+            "words": 343,
+            "sha256": "ecbb8ff9309037c8a99ce0454effe0dd075405a9c898919b3fb7d432bcbcb5a3",
+            "rendered_html_captured": true
+        },
+        "personal-tax-services": {
+            "url": "https://bajwacpa.com/personal-tax-services/",
+            "title": "Personal Tax Services",
+            "words": 380,
+            "sha256": "276121306eb695d61303ca0bf207cc209b26372e1a4a0704493da285ff99a58e",
+            "rendered_html_captured": true
+        },
+        "contact": {
+            "url": "https://bajwacpa.com/contact/",
+            "title": "Contact",
+            "words": 35,
+            "sha256": "6a45a8c04832a93b83b9012b417c8bc43d2d22bcc76b92aea11c118626d41d92",
+            "rendered_html_captured": true
+        },
+        "about": {
+            "url": "https://bajwacpa.com/about/",
+            "title": "About Us",
+            "words": 348,
+            "sha256": "f8da48c9525815d0291127562a9d653883a10414ac108f66b3f9798700da5cb1",
+            "rendered_html_captured": true
+        },
+        "tax-checklists": {
+            "url": "https://bajwacpa.com/tax-checklists/",
+            "title": "Tax Checklists",
+            "words": 78,
+            "sha256": "3070e7c87359f257ecf7392a2fbebbc29171c62d2327599de985f5070a9d0f97",
+            "rendered_html_captured": true
+        },
+        "blog": {
+            "url": "https://bajwacpa.com/blog/",
+            "title": "Blog Posts",
+            "words": 19,
+            "sha256": "d47418b9cbe8267eb5ed20193f6089c2bd8e662daf8c089b4ecf24a552acf8ea",
+            "rendered_html_captured": false
+        },
+        "404-2": {
+            "url": "https://bajwacpa.com/404-2/",
+            "title": "404",
+            "words": 22,
+            "sha256": "2d73d4f818b823f3b85e369929cdc4eb8c49c0f4870d39dfc3e646c759b61144",
+            "rendered_html_captured": true
+        },
+        "tax-resources": {
+            "url": "https://bajwacpa.com/tax-resources/",
+            "title": "Tax Resources",
+            "words": 188,
+            "sha256": "1e93dd0f5e847b3d8db5cc0be6e6e988e36d7c29996d0bab96856f6b86c06b82",
+            "rendered_html_captured": true
+        },
+        "blogs": {
+            "url": "https://bajwacpa.com/tax-resources/blogs/",
+            "title": "Blog Posts",
+            "words": 127,
+            "sha256": "d26e075423d4c3c537859c8473ecc243deb8b350063b8e989a6330d3e47b29d7",
+            "rendered_html_captured": true
+        },
+        "articles": {
+            "url": "https://bajwacpa.com/tax-resources/articles/",
+            "title": "Articles",
+            "words": 130,
+            "sha256": "ca243f82aeed5b79f6d2add4f2ffbae0313b73836eaf4900ab8487672bb576c4",
+            "rendered_html_captured": true
+        },
+        "newsletters": {
+            "url": "https://bajwacpa.com/tax-resources/newsletters/",
+            "title": "Newsletters",
+            "words": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rendered_html_captured": false
+        },
+        "tax-tips": {
+            "url": "https://bajwacpa.com/tax-resources/tax-tips/",
+            "title": "Tax Tips",
+            "words": 26,
+            "sha256": "10c9754f38a4b8101fdee5a19c6c149f3067647ace1f8db1a4ca9f46eca4793c",
+            "rendered_html_captured": true
+        },
+        "tax-filing-deadlines": {
+            "url": "https://bajwacpa.com/tax-resources/tax-filing-deadlines/",
+            "title": "Tax Filing Deadlines",
+            "words": 27,
+            "sha256": "6dfbd7462b4d50e87b0d66fe88b6e2afcf76c0afb3683e382c9ba02f7735c98f",
+            "rendered_html_captured": true
+        },
+        "faq": {
+            "url": "https://bajwacpa.com/tax-resources/faq/",
+            "title": "FAQ",
+            "words": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rendered_html_captured": false
+        },
+        "test": {
+            "url": "https://bajwacpa.com/test/",
+            "title": "TEST",
+            "words": 116,
+            "sha256": "85eaca4cf24524722d1167257a8458b7d3dd6752d5cdce7a2554a26ebfbd182f",
+            "rendered_html_captured": true
+        }
+    },
+    "posts": {
+        "how-to-file-a-zero-income-tax-return-in-canada": {
+            "url": "https://bajwacpa.com/how-to-file-a-zero-income-tax-return-in-canada/",
+            "title": "How to File a Zero Income Tax Return in Canada",
+            "words": 890,
+            "sha256": "20c0d6c8affff2949761707ed3c5581574a146b3be04920a70aaa25561c0cc3f"
+        },
+        "what-is-gst-and-hst-rates-rules": {
+            "url": "https://bajwacpa.com/what-is-gst-and-hst-rates-rules/",
+            "title": "What Is GST and HST: Rates & Rules Explained",
+            "words": 1006,
+            "sha256": "5c908a07f6ec959de0c9e65ba4406a31ca030f40aa4d90c04fdf09645523a4c1"
+        },
+        "how-to-get-my-tax-return": {
+            "url": "https://bajwacpa.com/how-to-get-my-tax-return/",
+            "title": "How to Get My Tax Return: A Simple Step-by-Step Guide",
+            "words": 1074,
+            "sha256": "fdf416deaac07c0a746111b15a41bb598ee632d13964223b9e3028bbf955182e"
+        },
+        "2020-personal-tax-return-what-your-tax-bill-could-look-like-next-year-if-you-received-cerb-and-crb": {
+            "url": "https://bajwacpa.com/2020-personal-tax-return-what-your-tax-bill-could-look-like-next-year-if-you-received-cerb-and-crb/",
+            "title": "2020 Personal Tax Return – What your tax bill could look like next year if you received CERB and CRB",
+            "words": 969,
+            "sha256": "3839bdc31b84b309742a4696e7f38cdf40f3b65fbbb4a609a921407b2224da42"
+        },
+        "personal-real-estate-corporations-in-ontario": {
+            "url": "https://bajwacpa.com/personal-real-estate-corporations-in-ontario/",
+            "title": "Personal Real Estate Corporations in Ontario",
+            "words": 917,
+            "sha256": "32804f1f83d991d873d5edbd44731a89013c302889db1735aa4f58d414836580"
+        },
+        "6-year-end-tax-tips-for-businesses": {
+            "url": "https://bajwacpa.com/6-year-end-tax-tips-for-businesses/",
+            "title": "6 YEAR END TAX TIPS FOR BUSINESSES",
+            "words": 733,
+            "sha256": "712749fe0debdce7542f05d9e61926f81b3ab0f4626a06245e5039a3d4a40db6"
+        },
+        "real-estate-taxes-on-sale-of-investment-property-in-canada": {
+            "url": "https://bajwacpa.com/real-estate-taxes-on-sale-of-investment-property-in-canada/",
+            "title": "REAL ESTATE TAXES ON SALE OF INVESTMENT PROPERTY IN CANADA",
+            "words": 590,
+            "sha256": "17c40371f9a9ae2261c131044dd8b34dd20cf4a74af2548fe8a6b20b44cbce1d"
+        },
+        "canada-emergency-response-benefit-cerb-is-taxable-to-individuals-while-filing-their-2020-personal-tax-returns": {
+            "url": "https://bajwacpa.com/canada-emergency-response-benefit-cerb-is-taxable-to-individuals-while-filing-their-2020-personal-tax-returns/",
+            "title": "Canada Emergency Response Benefit (CERB) is taxable to individuals while filing their 2020 personal tax returns",
+            "words": 1524,
+            "sha256": "ac71176e627c66720297d27fdae66e7250ff0c58fba2635ee3f3dbd0e5886805"
+        },
+        "tax-consultant-mississauga": {
+            "url": "https://bajwacpa.com/tax-consultant-mississauga/",
+            "title": "Tax Consultant Mississauga",
+            "words": 1534,
+            "sha256": "4ba4f9c983ff0e8bbe4468e1b3770f6abd61c4191eac39b09fb222b5fe1bf413"
+        },
+        "cpa-services-mississauga-for-small-business": {
+            "url": "https://bajwacpa.com/cpa-services-mississauga-for-small-business/",
+            "title": "CPA Services Mississauga for Small Business",
+            "words": 1232,
+            "sha256": "e177c71b603b2ece673cfae60ff479b42f75167ec5e64383ea0d6d8db9960cea"
+        },
+        "tax-consultant-caledon": {
+            "url": "https://bajwacpa.com/tax-consultant-caledon/",
+            "title": "Tax Consultant Caledon",
+            "words": 1136,
+            "sha256": "8f7a94858b5701399faf05a071983156bf5be190d9da488087648648aebff2e9"
+        },
+        "tax-consultant-toronto": {
+            "url": "https://bajwacpa.com/tax-consultant-toronto/",
+            "title": "Tax Consultant Toronto",
+            "words": 1149,
+            "sha256": "1c220f250b4b213cad05e68d9e3e490e2c0c615afbcf8261e65ef9eb686eb2ed"
+        },
+        "mississauga-tax-services": {
+            "url": "https://bajwacpa.com/mississauga-tax-services/",
+            "title": "Mississauga Tax Services",
+            "words": 1035,
+            "sha256": "8112cc23c217ab72a8f03aa94129d5dc18fc20d8154f7e074999e88c6e51f7b7"
+        },
+        "tax-consultant-brampton": {
+            "url": "https://bajwacpa.com/tax-consultant-brampton/",
+            "title": "Tax Consultant Brampton",
+            "words": 1090,
+            "sha256": "5afb08912af1aa9ca52d5cef2fe648def8372caa387aa15b7efcdcac32acb60f"
+        },
+        "accountants-in-brampton": {
+            "url": "https://bajwacpa.com/accountants-in-brampton/",
+            "title": "Accountants In Brampton",
+            "words": 1193,
+            "sha256": "8c5f27ec036dd233719add51d8bf11988fc49362d136f93dbded1130c20cb22d"
+        },
+        "accounting-firm-mississauga": {
+            "url": "https://bajwacpa.com/accounting-firm-mississauga/",
+            "title": "Accounting Firm Mississauga",
+            "words": 1135,
+            "sha256": "b05369cae868942036c6c2055367cfb7cdc178ad19cdc6650f960109b0a02a5d"
+        },
+        "accounting-firms-toronto": {
+            "url": "https://bajwacpa.com/accounting-firms-toronto/",
+            "title": "Accounting Firms Toronto",
+            "words": 1148,
+            "sha256": "0742b4f594e8941b86d1f5946a730a8bfdeb8436e86888f78aced26fd07374c4"
+        },
+        "accounting-services-mississauga": {
+            "url": "https://bajwacpa.com/accounting-services-mississauga/",
+            "title": "Accounting  Services Mississauga",
+            "words": 1130,
+            "sha256": "27d9be2eb18c3101dbcc1eed56ec93c6d6d174419468f4ace72157a88dc19ded"
+        },
+        "accounting-service-toronto": {
+            "url": "https://bajwacpa.com/accounting-service-toronto/",
+            "title": "Accounting Service Toronto",
+            "words": 1294,
+            "sha256": "4ac9387341c9c275141c6dd827239fdd91ceaf7dc598d0b0ef7fc29d41ae7232"
+        },
+        "bookkeeping-services-mississauga": {
+            "url": "https://bajwacpa.com/bookkeeping-services-mississauga/",
+            "title": "Bookkeeping Services Mississauga",
+            "words": 1227,
+            "sha256": "f89c7bd16ac4f1e5641839767fa62d857f3d01420a9ebc1e2a2f77d49478b0c9"
+        },
+        "tax-accountant-mississauga": {
+            "url": "https://bajwacpa.com/tax-accountant-mississauga/",
+            "title": "Tax Accountant Mississauga",
+            "words": 1336,
+            "sha256": "322cfed1cace2a80846eded63f31339f7ae6d30e83103713d9332a87fe2d4696"
+        },
+        "bookkeeping-services-toronto": {
+            "url": "https://bajwacpa.com/bookkeeping-services-toronto/",
+            "title": "Bookkeeping Services Toronto",
+            "words": 1185,
+            "sha256": "f2b45a5d4f51fbbf12d3339ecdecbe7abb0732fdae515b73bd49e8cf3a550241"
+        },
+        "corporate-tax-mississauga": {
+            "url": "https://bajwacpa.com/corporate-tax-mississauga/",
+            "title": "Corporate Tax Mississauga",
+            "words": 1152,
+            "sha256": "7b972cae1d48206f18418073b0ba0098b136ff5feeb656abac42fc8445748340"
+        },
+        "personal-tax-preparation-tips": {
+            "url": "https://bajwacpa.com/personal-tax-preparation-tips/",
+            "title": "Personal Tax Preparation Tips",
+            "words": 547,
+            "sha256": "2c0738679371e81f2835cb535dc5eacc248b90a38d53549b8581c8ed94b86205"
+        },
+        "finding-best-tax-consultant": {
+            "url": "https://bajwacpa.com/finding-best-tax-consultant/",
+            "title": "Finding the Best Tax Consultant",
+            "words": 541,
+            "sha256": "cedfef51caa86a6c5ff2a31092011ab11bf8d16cf724e45c2b3a79911b834075"
+        },
+        "why-is-it-important-to-hire-an-accountant": {
+            "url": "https://bajwacpa.com/why-is-it-important-to-hire-an-accountant/",
+            "title": "Why is it Important to Hire an Accountant",
+            "words": 627,
+            "sha256": "877994682541fe4a2a6fc7befe897223e3ef33d77a9d21f6fbc770f9a0cc65c7"
+        },
+        "tax-services-mississauga": {
+            "url": "https://bajwacpa.com/tax-services-mississauga/",
+            "title": "Tax Services Mississauga",
+            "words": 642,
+            "sha256": "83d4e12f504aa258acb7fe2f9e2f7c65e601c8907f70950bb453c7a7b75bcf5b"
+        },
+        "accounting-businesses-need-one": {
+            "url": "https://bajwacpa.com/accounting-businesses-need-one/",
+            "title": "Accounting – All Businesses Need One",
+            "words": 642,
+            "sha256": "17b707959383ffa0a60c9c88c6a7540d19b04a4ea506872ccac2c70ec3300146"
+        },
+        "cpa-service-vaughan": {
+            "url": "https://bajwacpa.com/cpa-service-vaughan/",
+            "title": "CPA Service Vaughan",
+            "words": 591,
+            "sha256": "1c3653375ffe6984edd763c4b6658fb8493931319642ec51658388cf00aa3fe1"
+        },
+        "cpa-service-toronto": {
+            "url": "https://bajwacpa.com/cpa-service-toronto/",
+            "title": "CPA Service Toronto",
+            "words": 607,
+            "sha256": "408828e8092ce253a495ac5016c02b694c8692e136e22ba621f44a601bb5450b"
+        },
+        "cpa-service-mississauga": {
+            "url": "https://bajwacpa.com/cpa-service-mississauga/",
+            "title": "CPA Service Mississauga",
+            "words": 516,
+            "sha256": "fd87b098ee1b7df5ab9ed64187e044c4fbd75ab9c483195189707c09fa5e48d8"
+        },
+        "cpa-service-brampton": {
+            "url": "https://bajwacpa.com/cpa-service-brampton/",
+            "title": "CPA Service Brampton",
+            "words": 585,
+            "sha256": "978ed0356f9b0f2eb5a49e54e444d3a42780e9dc4f56bec20c0804bea8540015"
+        },
+        "accountant-mississauga": {
+            "url": "https://bajwacpa.com/accountant-mississauga/",
+            "title": "Accountant Mississauga",
+            "words": 556,
+            "sha256": "b5e634e9c7cfe59b1984886a8d69bf1777d6171bf26be46ea26bf89dbe507d09"
+        }
+    }
+}

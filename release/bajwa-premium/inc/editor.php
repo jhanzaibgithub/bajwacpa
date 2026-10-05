@@ -13,6 +13,7 @@ function bajwa_page_design_box( $post ) {
 }
 function bajwa_editor_guide_box( $post ) {
 	echo '<p><strong>Main content:</strong> WordPress block editor.</p><p><strong>Top image:</strong> Featured Image.</p><p><strong>Top text:</strong> Bajwa Page Hero & Design.</p>';
+	if ( get_post_meta( $post->ID, '_bajwa_designed_content', true ) ) { echo '<p><strong>Designed sections:</strong> each section is a Custom HTML block. Select a block and edit its text, links or images, then use the block toolbar&rsquo;s <em>Preview</em> to check it. Blocks can be moved, duplicated or removed. Shortcodes such as <code>[bajwa_contact_form]</code> or <code>[bajwa_service_carousel]</code> insert live theme features.</p>'; }
 	if ( 'page' === $post->post_type && 'home' === $post->post_name ) { echo '<p><strong>Homepage carousel:</strong> <a href="' . esc_url( admin_url( 'edit.php?post_type=hero_slide' ) ) . '">Hero Slides</a>.</p><p><strong>Service cards:</strong> <a href="' . esc_url( admin_url( 'edit.php?post_type=service' ) ) . '">Services</a>.</p>'; }
 	if ( 'post' === $post->post_type ) { echo '<p>The Featured Image is used on both the blog card and article hero.</p>'; }
 }

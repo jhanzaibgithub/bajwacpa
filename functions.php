@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'BAJWA_PREMIUM_VERSION', '5.4.1' );
+define( 'BAJWA_PREMIUM_VERSION', '5.9.9' );
 define( 'BAJWA_PREMIUM_DIR', trailingslashit( get_template_directory() ) );
 
 require_once BAJWA_PREMIUM_DIR . 'inc/setup.php';
@@ -9,6 +9,8 @@ require_once BAJWA_PREMIUM_DIR . 'inc/carousel.php';
 require_once BAJWA_PREMIUM_DIR . 'inc/contact.php';
 require_once BAJWA_PREMIUM_DIR . 'inc/editor.php';
 require_once BAJWA_PREMIUM_DIR . 'inc/legacy-content.php';
+require_once BAJWA_PREMIUM_DIR . 'inc/sections.php';
+require_once BAJWA_PREMIUM_DIR . 'inc/page-content.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );
@@ -31,6 +33,12 @@ add_action( 'admin_menu', 'bajwa_setup_admin_menu' );
 add_action( 'admin_post_bajwa_premium_setup', 'bajwa_handle_setup' );
 
 add_action( 'wp_head', function () {
+	printf( '<link rel="icon" href="%s" type="image/png" sizes="512x512">' . "\n", esc_url( get_theme_file_uri( 'assets/images/bajwa-favicon.png' ) ) );
+	printf( '<link rel="icon" href="%s" type="image/png" sizes="32x32">' . "\n", esc_url( get_theme_file_uri( 'assets/images/bajwa-favicon-32.png' ) ) );
+	printf( '<link rel="apple-touch-icon" href="%s" sizes="192x192">' . "\n", esc_url( get_theme_file_uri( 'assets/images/bajwa-favicon-192.png' ) ) );
+}, 0 );
+
+add_action( 'wp_head', function () {
 	if ( ! is_front_page() ) { return; }
 	$slides = get_posts( array( 'post_type' => 'hero_slide', 'numberposts' => 1, 'orderby' => 'menu_order', 'order' => 'ASC' ) );
 	if ( ! $slides ) { return; }
@@ -43,7 +51,7 @@ add_action( 'wp_head', function () {
 		$base = pathinfo( $file, PATHINFO_FILENAME );
 		$srcset = get_theme_file_uri( 'assets/images/' . $base . '-960.jpg' ) . ' 960w, ' . get_theme_file_uri( 'assets/images/' . $base . '-1280.jpg' ) . ' 1280w, ' . $url . ' 1672w';
 	}
-	if ( $url ) { printf( '<link rel="preload" as="image" href="%s" imagesrcset="%s" imagesizes="100vw" fetchpriority="high">\n', esc_url( $url ), esc_attr( $srcset ) ); }
+	if ( $url ) { printf( '<link rel="preload" as="image" href="%s" imagesrcset="%s" imagesizes="100vw" fetchpriority="high">' . "\n", esc_url( $url ), esc_attr( $srcset ) ); }
 }, 1 );
 
 function bajwa_phone_href( $phone ) { return preg_replace( '/[^0-9+]/', '', $phone ); }
@@ -101,7 +109,6 @@ function bajwa_service_image_name( $post_id ) {
 		'bookkeeping' => 'service-books', 'financial-statements' => 'service-books',
 		'personal-tax-return' => 'service-personal', 'non-resident-tax-returns' => 'service-personal', 'trust-estate-tax-return' => 'service-personal',
 		'real-estate-tax-returns' => 'service-realestate', 'incorporation-business-registration' => 'page-about', 'tax-planning' => 'hero-planning',
-		'professional-corporations' => 'card-professional-corporation', 'hst-new-residential-rental-property-rebate' => 'card-hst-rebate',
 		'budgeting-forecasting' => 'card-forecasting', 'business-consulting' => 'card-consulting',
 	);
 	return $map[ $slug ] ?? 'service-corporate';
@@ -131,4 +138,64 @@ function bajwa_blog_image_name( $post_id = 0 ) {
 	}
 	$images = array( 'service-corporate', 'service-personal', 'service-realestate', 'service-books', 'card-forecasting', 'card-consulting' );
 	return $images[ abs( crc32( $slug ) ) % count( $images ) ];
+}
+
+add_action( 'wp_head', function () {
+	if ( is_front_page() ) { echo bajwa_local_business_schema( home_url( '/' ), get_theme_file_uri( 'assets/images/bajwa-logo.png' ) ) . "\n"; }
+}, 5 );
+
+/** Permalink of the first page using a template, or a fallback path. */
+function bajwa_template_page_url( $template, $fallback ) {
+	$pages = get_posts( array( 'post_type' => 'page', 'post_status' => 'publish', 'meta_key' => '_wp_page_template', 'meta_value' => $template, 'numberposts' => 1 ) );
+	return $pages ? get_permalink( $pages[0] ) : home_url( $fallback );
+}
+
+/** Suggested services and articles for service and blog detail pages. */
+function bajwa_render_related_content( $first = 'services' ) {
+	$current = get_the_ID();
+	$all = get_posts( array( 'post_type' => 'service', 'numberposts' => -1, 'orderby' => 'menu_order title', 'order' => 'ASC', 'fields' => 'ids' ) );
+	$position = array_search( $current, $all, true );
+	// Start with the services that follow the current one so each page suggests a different set.
+	$service_ids = false === $position ? $all : array_merge( array_slice( $all, $position + 1 ), array_slice( $all, 0, $position ) );
+	$services = array();
+	foreach ( array_slice( $service_ids, 0, 4 ) as $id ) {
+		$services[] = array( 'title' => bajwa_plain_text( get_the_title( $id ) ), 'url' => get_permalink( $id ), 'image' => bajwa_service_card_image( $id, 'related-service__image' ), 'text' => bajwa_plain_text( wp_trim_words( get_the_excerpt( $id ), 14 ) ) );
+	}
+	$posts = bajwa_post_card_items( 3, array( $current ) );
+	bajwa_render_related_hub( $services, $posts, array( 'first' => $first, 'services_url' => get_post_type_archive_link( 'service' ), 'blog_url' => bajwa_template_page_url( 'page-blog.php', '/blog/' ) ) );
+}
+
+/** Page excerpt for the hero intro, ignoring page-builder shortcode text imported from the previous site. */
+function bajwa_clean_excerpt( $fallback = '' ) {
+	if ( ! has_excerpt() ) { return $fallback; }
+	$text = trim( preg_replace( '/\s+/', ' ', preg_replace( '/\[\/?[a-z_]+[^\]]*\]/i', ' ', get_the_excerpt() ) ) );
+	// Keep the hero intro short: imported summaries can be several paragraphs long.
+	return ( '' === $text || false !== strpos( $text, '[' ) ) ? $fallback : wp_trim_words( $text, 30 );
+}
+
+/** Article card data (title, url, image, date, text) for the latest posts. */
+function bajwa_post_card_items( $count = 3, $exclude = array() ) {
+	$posts = array();
+	$query = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' => $count, 'post__not_in' => $exclude, 'no_found_rows' => true, 'ignore_sticky_posts' => true ) );
+	foreach ( $query->posts as $post ) {
+		if ( has_post_thumbnail( $post ) ) {
+			$image = get_the_post_thumbnail( $post, 'medium_large', array( 'class' => 'related-post__image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => '' ) );
+		} else {
+			$name = bajwa_blog_image_name( $post->ID );
+			$small = file_exists( BAJWA_PREMIUM_DIR . 'assets/images/' . $name . '-600.jpg' ) ? '-600' : '-960';
+			$image = sprintf( '<img class="related-post__image" src="%s" width="%d" height="%d" loading="lazy" decoding="async" alt="">', esc_url( get_theme_file_uri( 'assets/images/' . $name . $small . '.jpg' ) ), '-600' === $small ? 600 : 960, '-600' === $small ? 450 : 540 );
+		}
+		$posts[] = array( 'title' => bajwa_plain_text( get_the_title( $post ) ), 'url' => get_permalink( $post ), 'image' => $image, 'date' => get_the_date( 'M j, Y', $post ), 'text' => bajwa_plain_text( wp_trim_words( get_the_excerpt( $post ), 18 ) ) );
+	}
+	return $posts;
+}
+
+add_shortcode( 'bajwa_latest_posts', function ( $atts ) {
+	$atts = shortcode_atts( array( 'count' => 3 ), $atts );
+	return bajwa_render_post_cards( bajwa_post_card_items( max( 1, min( 12, (int) $atts['count'] ) ) ) );
+} );
+
+/** Plain text for card data that the section renderers escape (avoids double-encoded &amp;amp; and &amp;hellip;). */
+function bajwa_plain_text( $text ) {
+	return html_entity_decode( wp_strip_all_tags( (string) $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' );
 }
