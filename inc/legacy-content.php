@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /** One-time migration of client-owned copy from the previous Bajwa CPA website. */
 function bajwa_import_legacy_site_content() {
-	if ( get_option( 'bajwa_legacy_content_version' ) >= 5 ) { return; }
+	if ( get_option( 'bajwa_legacy_content_version' ) >= 6 ) { return; }
 	$pages_file = BAJWA_PREMIUM_DIR . 'data/live-pages.json';
 	if ( is_readable( $pages_file ) ) {
 		$source_pages = json_decode( file_get_contents( $pages_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
@@ -82,7 +82,7 @@ function bajwa_import_legacy_site_content() {
 		update_post_meta( $post->ID, '_bajwa_content_source', $source_url );
 		foreach ( array( 'h1' => '_bajwa_h1', 'meta_title' => '_bajwa_seo_title', 'meta_description' => '_bajwa_seo_description' ) as $key => $meta_key ) { if ( ! empty( $live_content[ $slug ][ $key ] ) ) { update_post_meta( $post->ID, $meta_key, $live_content[ $slug ][ $key ] ); } }
 	}
-	update_option( 'bajwa_legacy_content_version', 5 );
+	update_option( 'bajwa_legacy_content_version', 6 );
 }
 add_action( 'admin_init', 'bajwa_import_legacy_site_content' );
 
