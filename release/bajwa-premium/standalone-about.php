@@ -63,7 +63,7 @@
 	<section class="section about-intro">
 		<div class="container editorial-split">
 			<div class="editorial-photo editorial-photo--portrait">
-				<img src="assets/images/page-about.jpg" width="1672" height="941" alt="Business owners meeting with a professional advisor" loading="lazy">
+				<img src="assets/images/about-advisor.jpg" width="1195" height="1600" alt="Bajwa CPA advisor in a client meeting room" loading="lazy">
 				<div class="editorial-photo__badge">
 					<strong>CPA</strong>
 					<span>Clear, considered guidance</span>

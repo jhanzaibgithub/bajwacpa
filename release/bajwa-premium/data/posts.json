@@ -20,7 +20,8 @@
         "featured_media": 204099,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 203831,
@@ -43,6 +44,60 @@
         "featured_media": 203836,
         "categories": [
             11
+        ],
+        "tags": [
+            {
+                "name": "Canadian taxes",
+                "slug": "canadian-taxes"
+            },
+            {
+                "name": "CRA tax guide",
+                "slug": "cra-tax-guide"
+            },
+            {
+                "name": "GST",
+                "slug": "gst"
+            },
+            {
+                "name": "GST and HST",
+                "slug": "gst-and-hst"
+            },
+            {
+                "name": "GST rates",
+                "slug": "gst-rates"
+            },
+            {
+                "name": "GST registration",
+                "slug": "gst-registration"
+            },
+            {
+                "name": "GST/HST rules",
+                "slug": "gst-hst-rules"
+            },
+            {
+                "name": "HST",
+                "slug": "hst"
+            },
+            {
+                "name": "HST rates",
+                "slug": "hst-rates"
+            },
+            {
+                "name": "HST registration",
+                "slug": "hst-registration"
+            },
+            {
+                "name": "input tax credits",
+                "slug": "input-tax-credits"
+            },
+            {
+                "name": "sales tax Canada",
+                "slug": "sales-tax-canada"
+            },
+            {
+                "name": "small-business taxes",
+                "slug": "small-business-taxes"
+            }
         ]
     },
     {
@@ -66,6 +121,44 @@
         "featured_media": 203493,
         "categories": [
             11
+        ],
+        "tags": [
+            {
+                "name": "Income Tax",
+                "slug": "income-tax"
+            },
+            {
+                "name": "Online Tax Return",
+                "slug": "online-tax-return"
+            },
+            {
+                "name": "Personal Finance",
+                "slug": "personal-finance"
+            },
+            {
+                "name": "Tax Documents",
+                "slug": "tax-documents"
+            },
+            {
+                "name": "Tax Filing",
+                "slug": "tax-filing"
+            },
+            {
+                "name": "Tax Guide",
+                "slug": "tax-guide"
+            },
+            {
+                "name": "Tax Records",
+                "slug": "tax-records"
+            },
+            {
+                "name": "Tax Refund",
+                "slug": "tax-refund"
+            },
+            {
+                "name": "Tax Return",
+                "slug": "tax-return"
+            }
         ]
     },
     {
@@ -89,7 +182,8 @@
         "featured_media": 3084,
         "categories": [
             10
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 3052,
@@ -112,7 +206,8 @@
         "featured_media": 3083,
         "categories": [
             10
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 2813,
@@ -135,7 +230,8 @@
         "featured_media": 2889,
         "categories": [
             10
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 2793,
@@ -158,7 +254,8 @@
         "featured_media": 2887,
         "categories": [
             10
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 2661,
@@ -181,7 +278,8 @@
         "featured_media": 2904,
         "categories": [
             10
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 867,
@@ -204,7 +302,8 @@
         "featured_media": 983,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 862,
@@ -227,7 +326,8 @@
         "featured_media": 984,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 858,
@@ -250,7 +350,8 @@
         "featured_media": 985,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 854,
@@ -273,7 +374,8 @@
         "featured_media": 986,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 849,
@@ -296,7 +398,8 @@
         "featured_media": 987,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 845,
@@ -319,7 +422,8 @@
         "featured_media": 988,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 794,
@@ -342,7 +446,8 @@
         "featured_media": 989,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 788,
@@ -365,7 +470,8 @@
         "featured_media": 990,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 784,
@@ -388,7 +494,8 @@
         "featured_media": 201910,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 780,
@@ -411,7 +518,8 @@
         "featured_media": 201909,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 775,
@@ -434,7 +542,8 @@
         "featured_media": 201908,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 771,
@@ -457,7 +566,8 @@
         "featured_media": 201907,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 743,
@@ -480,7 +590,8 @@
         "featured_media": 201906,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 735,
@@ -503,7 +614,8 @@
         "featured_media": 201905,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 719,
@@ -526,7 +638,8 @@
         "featured_media": 201904,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 714,
@@ -549,7 +662,8 @@
         "featured_media": 715,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 704,
@@ -572,7 +686,8 @@
         "featured_media": 201903,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 700,
@@ -595,7 +710,8 @@
         "featured_media": 201902,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 688,
@@ -618,7 +734,8 @@
         "featured_media": 201901,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 680,
@@ -641,7 +758,8 @@
         "featured_media": 201900,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 674,
@@ -664,7 +782,8 @@
         "featured_media": 3055,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 668,
@@ -687,7 +806,8 @@
         "featured_media": 669,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 665,
@@ -710,7 +830,8 @@
         "featured_media": 666,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 651,
@@ -733,7 +854,8 @@
         "featured_media": 201899,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     },
     {
         "id": 646,
@@ -756,6 +878,7 @@
         "featured_media": 648,
         "categories": [
             11
-        ]
+        ],
+        "tags": []
     }
 ]

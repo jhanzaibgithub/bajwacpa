@@ -99,7 +99,7 @@ function bajwa_run_setup() {
 	foreach ( $resource_images as $page_id => $filename ) { if ( $page_id ) { $attachment_id = bajwa_import_theme_image( $filename, get_the_title( $page_id ) . ' resources' ); if ( $attachment_id && ! has_post_thumbnail( $page_id ) ) { set_post_thumbnail( $page_id, $attachment_id ); } } }
 
 	$slides = array(
-		array( 'Clarity for every financial decision.', 'Chartered Professional Accountants', 'Tax, accounting and advisory support built around your goals—not a one-size-fits-all answer.', 'Book a consultation', '/contact/', 'hero-clarity.jpg', 'center center' ),
+		array( 'Looking for the Best Accountant Firm in Brampton and Mississauga?', 'Chartered Professional Accountants', 'The best accountant firm in Brampton and Mississauga should give you a licensed CPA, a fixed quote and support all year. Bajwa CPA gives you all three, with more than 15 years of experience.', 'Book a consultation', '/contact/', 'hero-clarity.jpg', 'center center' ),
 		array( 'Plan today. Grow with confidence.', 'Strategic Tax Planning', 'Year-round advice that helps business owners protect cash flow, reduce surprises and move forward.', 'Explore tax planning', '/service/tax-planning/', 'hero-planning.jpg', '60% center' ),
 		array( 'Your business deserves a clear view.', 'Accounting & Advisory', 'Reliable books, meaningful financial reporting and practical advice from a team that understands your business.', 'View our services', '/service/', 'hero-advisory.jpg', 'center center' ),
 	);
@@ -152,7 +152,7 @@ function bajwa_import_articles() {
 			'post_title' => wp_strip_all_tags( $source['title']['rendered'] ?? '' ),
 			'post_content' => wp_kses_post( $source['content']['rendered'] ?? '' ),
 			'post_excerpt' => wp_strip_all_tags( $source['excerpt']['rendered'] ?? '' ),
-			'post_date' => sanitize_text_field( $source['date'] ?? current_time( 'mysql' ) ), 'post_category' => $term_ids,
+			'post_date' => sanitize_text_field( $source['date'] ?? current_time( 'mysql' ) ), 'post_category' => $term_ids, 'tags_input' => wp_list_pluck( (array) ( $source['tags'] ?? array() ), 'name' ),
 		) );
 		if ( $post_id && ! is_wp_error( $post_id ) ) {
 			$image_name = function_exists( 'bajwa_blog_image_name' ) ? bajwa_blog_image_name( $post_id ) . '.jpg' : 'blog-insights.jpg';
@@ -170,8 +170,11 @@ function bajwa_create_menu( $about, $checklists, $contact, $resources, $resource
 	$add( get_option( 'page_on_front' ), 'Home' ); $add( $about, 'About Us' );
 	$services_parent = wp_update_nav_menu_item( $menu_id, 0, array( 'menu-item-title' => 'Services', 'menu-item-url' => get_post_type_archive_link( 'service' ), 'menu-item-type' => 'custom', 'menu-item-status' => 'publish' ) );
 	foreach ( $service_ids as $id ) { $add( $id, get_the_title( $id ), $services_parent, 'service' ); }
-	$add( $checklists, 'Tax Checklists' ); $resource_parent = $add( $resources, 'Tax Resources' );
-	foreach ( array( 'blog' => 'Blog Posts', 'tax-tips' => 'Tax Tips', 'tax-filing-deadlines' => 'Tax Filing Deadlines' ) as $slug => $label ) { if ( isset( $resource_ids[ $slug ] ) ) { $add( $resource_ids[ $slug ], $label, $resource_parent ); } }
+	$add( $checklists, 'Tax Checklists' );
+	// Tax Resources dropdown disabled: Blog is a top-level link instead.
+	// $resource_parent = $add( $resources, 'Tax Resources' );
+	// foreach ( array( 'blog' => 'Blog Posts', 'tax-tips' => 'Tax Tips', 'tax-filing-deadlines' => 'Tax Filing Deadlines' ) as $slug => $label ) { if ( isset( $resource_ids[ $slug ] ) ) { $add( $resource_ids[ $slug ], $label, $resource_parent ); } }
+	if ( isset( $resource_ids['blog'] ) ) { $add( $resource_ids['blog'], 'Blog' ); }
 	$add( $contact, 'Contact Us' );
 	set_theme_mod( 'nav_menu_locations', array( 'primary' => $menu_id, 'footer' => $menu_id ) );
 }

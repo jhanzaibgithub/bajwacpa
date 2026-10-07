@@ -236,3 +236,69 @@ function bajwa_sections_trim_words( $text, $words = 18 ) {
 	$parts = explode( ' ', $text );
 	return count( $parts ) > $words ? implode( ' ', array_slice( $parts, 0, $words ) ) . '…' : $text;
 }
+
+/**
+ * Article presentation: turns the plain "About the Author" paragraphs and the "Frequently Asked Questions"
+ * paragraph pairs into designed blocks. Text is unchanged.
+ */
+function bajwa_enhance_article_html( $html ) {
+	$html = (string) $html;
+	// About the Author: label paragraph followed by the bio paragraph.
+	$html = preg_replace_callback(
+		'#<p[^>]*>\s*<strong>\s*About the Author\s*</strong>\s*</p>\s*(<p[^>]*>.*?</p>)#is',
+		function ( $m ) {
+			$bio = preg_replace( '#^<p[^>]*>|</p>$#i', '', trim( $m[1] ) );
+			return '<aside class="author-card"><span class="author-card__avatar" aria-hidden="true">VB</span><div><p class="author-card__label">About the Author</p><p class="author-card__bio">' . $bio . '</p></div></aside>';
+		},
+		$html
+	);
+	// FAQ: heading followed by question/answer paragraph pairs.
+	$html = preg_replace_callback(
+		'#(<h2[^>]*>\s*(?:<strong>)?\s*Frequently Asked Questions\s*(?:</strong>)?\s*</h2>)(.*)$#is',
+		function ( $m ) {
+			$rest = $m[2];
+			$items = '';
+			$pattern = '#^\s*<p[^>]*>\s*<strong>([^<]*\?)</strong>\s*</p>\s*<p[^>]*>(.*?)</p>#is';
+			while ( preg_match( $pattern, $rest, $q ) ) {
+				$items .= '<details class="faq-item"><summary><span>' . $q[1] . '</span><i aria-hidden="true"></i></summary><div class="faq-item__answer"><p>' . $q[2] . '</p></div></details>';
+				$rest = substr( $rest, strlen( $q[0] ) );
+			}
+			if ( '' === $items ) { return $m[0]; }
+			return '<section class="article-faq">' . $m[1] . $items . '</section>' . $rest;
+		},
+		$html
+	);
+	return $html;
+}
+if ( function_exists( 'add_filter' ) ) { add_filter( 'the_content', function ( $content ) { return is_singular( 'post' ) ? bajwa_enhance_article_html( $content ) : $content; }, 25 ); }
+
+/**
+ * Links in article text that point at the old live domain: switch them to this site's own pages when a matching
+ * page exists, otherwise drop the link and keep the text. $resolver( $path ) returns a URL or null.
+ */
+function bajwa_localize_post_links( $html, $resolver ) {
+	return preg_replace_callback(
+		'#<a\s[^>]*href=["\']https?://(?:www\.)?bajwacpa\.com/?([^"\']*)["\'][^>]*>(.*?)</a>#is',
+		function ( $m ) use ( $resolver ) {
+			$url = call_user_func( $resolver, trim( $m[1], '/' ) );
+			return $url ? '<a href="' . htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' ) . '">' . $m[2] . '</a>' : $m[2];
+		},
+		(string) $html
+	);
+}
+
+if ( function_exists( 'add_filter' ) ) {
+	add_filter( 'the_content', function ( $content ) {
+		if ( ! is_singular( 'post' ) ) { return $content; }
+		return bajwa_localize_post_links( $content, function ( $path ) {
+			if ( 'how-to-file-a-zero-income-tax-return-in-canada' === get_post_field( 'post_name', get_the_ID() ) ) { return null; }
+			if ( '' === $path ) { return home_url( '/' ); }
+			if ( 'service' === $path ) { return get_post_type_archive_link( 'service' ); }
+			if ( 0 === strpos( $path, 'service/' ) ) { $svc = get_page_by_path( substr( $path, 8 ), OBJECT, 'service' ); return $svc ? get_permalink( $svc ) : null; }
+			if ( 'contact' === $path ) { return home_url( '/contact/' ); }
+			if ( 'tax-checklists' === $path ) { return bajwa_template_page_url( 'page-tax-checklists.php', '/tax-checklists/' ); }
+			$post = get_page_by_path( $path, OBJECT, 'post' );
+			return $post ? get_permalink( $post ) : null;
+		} );
+	}, 24 );
+}

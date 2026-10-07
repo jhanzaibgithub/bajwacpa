@@ -3,7 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /** One-time migration of client-owned copy from the previous Bajwa CPA website. */
 function bajwa_import_legacy_site_content() {
-	if ( get_option( 'bajwa_legacy_content_version' ) >= 6 ) { return; }
+	if ( get_option( 'bajwa_legacy_content_version' ) >= 7 ) { return; }
 	$pages_file = BAJWA_PREMIUM_DIR . 'data/live-pages.json';
 	if ( is_readable( $pages_file ) ) {
 		$source_pages = json_decode( file_get_contents( $pages_file ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
@@ -80,9 +80,9 @@ function bajwa_import_legacy_site_content() {
 		wp_update_post( $update );
 		$source_url = isset( $live_content[ $slug ]['source_url'] ) ? $live_content[ $slug ]['source_url'] : 'https://bajwacpa.com/service/' . $slug . '/';
 		update_post_meta( $post->ID, '_bajwa_content_source', $source_url );
-		foreach ( array( 'h1' => '_bajwa_h1', 'meta_title' => '_bajwa_seo_title', 'meta_description' => '_bajwa_seo_description' ) as $key => $meta_key ) { if ( ! empty( $live_content[ $slug ][ $key ] ) ) { update_post_meta( $post->ID, $meta_key, $live_content[ $slug ][ $key ] ); } }
+		foreach ( array( 'h1' => '_bajwa_h1', 'meta_title' => '_bajwa_seo_title', 'meta_description' => '_bajwa_seo_description', 'intro' => '_bajwa_intro' ) as $key => $meta_key ) { if ( ! empty( $live_content[ $slug ][ $key ] ) ) { update_post_meta( $post->ID, $meta_key, $live_content[ $slug ][ $key ] ); } }
 	}
-	update_option( 'bajwa_legacy_content_version', 6 );
+	update_option( 'bajwa_legacy_content_version', 7 );
 }
 add_action( 'admin_init', 'bajwa_import_legacy_site_content' );
 
@@ -96,3 +96,58 @@ function bajwa_service_seo_description() {
 	if ( is_singular( 'service' ) ) { $seo = get_post_meta( get_queried_object_id(), '_bajwa_seo_description', true ); if ( $seo ) { echo '<meta name="description" content="' . esc_attr( $seo ) . "\">\n"; } }
 }
 add_action( 'wp_head', 'bajwa_service_seo_description', 1 );
+
+/** Update the first homepage hero slide copy on existing installs (one time). */
+function bajwa_update_first_hero_slide() {
+	if ( (int) get_option( 'bajwa_hero_slide_copy' ) >= 1 ) { return; }
+	$slide = get_page_by_path( 'clarity-for-every-financial-decision', OBJECT, 'hero_slide' );
+	if ( $slide ) {
+		wp_update_post( array( 'ID' => $slide->ID, 'post_title' => 'Looking for the Best Accountant Firm in Brampton and Mississauga?', 'post_name' => sanitize_title( 'Looking for the Best Accountant Firm in Brampton and Mississauga?' ) ) );
+		update_post_meta( $slide->ID, 'bajwa_slide_text', 'The best accountant firm in Brampton and Mississauga should give you a licensed CPA, a fixed quote and support all year. Bajwa CPA gives you all three, with more than 15 years of experience.' );
+	}
+	update_option( 'bajwa_hero_slide_copy', 1 );
+}
+add_action( 'admin_init', 'bajwa_update_first_hero_slide' );
+
+/** Replace the Tax Resources dropdown with a single Blog link in the primary menu (one time). */
+function bajwa_menu_blog_link() {
+	if ( (int) get_option( 'bajwa_menu_blog_link' ) >= 1 ) { return; }
+	$menu = wp_get_nav_menu_object( 'Primary Navigation' );
+	$blog = get_page_by_path( 'blog' ) ?: get_page_by_path( 'tax-resources/blog' );
+	if ( $menu && $blog ) {
+		$items = wp_get_nav_menu_items( $menu->term_id );
+		$parent_ids = array(); $position = 0;
+		foreach ( (array) $items as $item ) { if ( 'Tax Resources' === $item->title ) { $parent_ids[] = $item->ID; $position = (int) $item->menu_order; } }
+		if ( $parent_ids ) {
+			foreach ( $items as $item ) { if ( in_array( $item->ID, $parent_ids, true ) || in_array( (int) $item->menu_item_parent, $parent_ids, true ) ) { wp_delete_post( $item->ID, true ); } }
+			wp_update_nav_menu_item( $menu->term_id, 0, array( 'menu-item-object-id' => $blog->ID, 'menu-item-object' => 'page', 'menu-item-type' => 'post_type', 'menu-item-title' => 'Blog', 'menu-item-status' => 'publish', 'menu-item-position' => $position ) );
+		}
+	}
+	update_option( 'bajwa_menu_blog_link', 1 );
+}
+add_action( 'admin_init', 'bajwa_menu_blog_link' );
+
+/** Point links inside service content at this site's own URLs instead of the hard-coded live domain. */
+function bajwa_localize_service_links( $html ) {
+	return preg_replace_callback( '#https?://(?:www\.)?bajwacpa\.com/([^"\'\s<>]*)#i', function ( $m ) {
+		$path = trim( $m[1], '/' );
+		if ( 'tax-resources/tax-filing-deadlines' === $path || 'tax-filing-deadlines' === $path ) { return bajwa_template_page_url( 'page-tax-filing-deadlines.php', '/tax-filing-deadlines/' ); }
+		if ( 'tax-checklists' === $path ) { return bajwa_template_page_url( 'page-tax-checklists.php', '/tax-checklists/' ); }
+		return home_url( '/' . ( '' === $path ? '' : $path . '/' ) );
+	}, (string) $html );
+}
+add_filter( 'the_content', function ( $content ) { return is_singular( 'service' ) ? bajwa_localize_service_links( $content ) : $content; }, 20 );
+
+/** Assign the original tags to already-imported articles (one time). */
+function bajwa_assign_article_tags() {
+	if ( (int) get_option( 'bajwa_article_tags' ) >= 1 ) { return; }
+	$file = BAJWA_PREMIUM_DIR . 'data/posts.json';
+	if ( is_readable( $file ) ) {
+		foreach ( (array) json_decode( file_get_contents( $file ), true ) as $source ) { // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+			$post = ! empty( $source['slug'] ) ? get_page_by_path( $source['slug'], OBJECT, 'post' ) : null;
+			if ( $post && ! empty( $source['tags'] ) && ! has_tag( '', $post ) ) { wp_set_post_tags( $post->ID, wp_list_pluck( $source['tags'], 'name' ) ); }
+		}
+	}
+	update_option( 'bajwa_article_tags', 1 );
+}
+add_action( 'admin_init', 'bajwa_assign_article_tags' );

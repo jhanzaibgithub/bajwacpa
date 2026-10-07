@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'BAJWA_PREMIUM_VERSION', '5.9.9' );
+define( 'BAJWA_PREMIUM_VERSION', '5.9.20' );
 define( 'BAJWA_PREMIUM_DIR', trailingslashit( get_template_directory() ) );
 
 require_once BAJWA_PREMIUM_DIR . 'inc/setup.php';
@@ -83,7 +83,7 @@ function bajwa_header_image_name( $post_id = 0 ) {
 }
 
 function bajwa_page_header( $args = array() ) {
-	$args = wp_parse_args( $args, array( 'post_id' => get_the_ID(), 'eyebrow' => 'Bajwa CPA Professional Corporation', 'title' => get_the_title(), 'intro' => '', 'class' => '' ) );
+	$args = wp_parse_args( $args, array( 'post_id' => get_the_ID(), 'eyebrow' => 'Bajwa CPA Professional Corporation', 'title' => get_the_title(), 'intro' => '', 'intro_html' => '', 'class' => '' ) );
 	$custom_eyebrow = get_post_meta( $args['post_id'], '_bajwa_hero_eyebrow', true );
 	$custom_title = get_post_meta( $args['post_id'], '_bajwa_hero_title', true );
 	$custom_intro = get_post_meta( $args['post_id'], '_bajwa_hero_intro', true );
@@ -98,7 +98,7 @@ function bajwa_page_header( $args = array() ) {
 		<?php if ( $attachment_id ) : echo wp_get_attachment_image( $attachment_id, 'full', false, array( 'class' => 'page-hero__image', 'sizes' => '100vw', 'loading' => 'eager', 'fetchpriority' => 'high' ) ); else : ?>
 			<img class="page-hero__image" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $name . '.jpg' ) ); ?>" srcset="<?php echo esc_url( get_theme_file_uri( 'assets/images/' . $name . '-960.jpg' ) ); ?> 960w, <?php echo esc_url( get_theme_file_uri( 'assets/images/' . $name . '-1280.jpg' ) ); ?> 1280w, <?php echo esc_url( get_theme_file_uri( 'assets/images/' . $name . '.jpg' ) ); ?> 1672w" sizes="100vw" alt="" width="1672" height="941" loading="eager" fetchpriority="high">
 		<?php endif; ?><span class="page-hero__overlay"></span></div>
-		<div class="container page-hero__content"><p class="eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p><h1><?php echo esc_html( $args['title'] ); ?></h1><?php if ( $args['intro'] ) : ?><p class="page-hero__intro"><?php echo esc_html( $args['intro'] ); ?></p><?php endif; ?></div>
+		<div class="container page-hero__content"><p class="eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p><h1><?php echo esc_html( $args['title'] ); ?></h1><?php if ( $args['intro_html'] ) : ?><div class="page-hero__intro page-hero__intro--rich"><?php echo wp_kses_post( $args['intro_html'] ); ?></div><?php elseif ( $args['intro'] ) : ?><p class="page-hero__intro"><?php echo esc_html( $args['intro'] ); ?></p><?php endif; ?><?php if ( 'page-hero--service' === $args['class'] ) : ?><div class="page-hero__actions"><a class="button button--gold" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Book a Free Consultation <?php echo bajwa_icon( 'arrow' ); ?></a><a class="button button--ghost" href="tel:+14169070568">Call 416-907-0568</a></div><?php endif; ?></div>
 	</header><?php
 }
 

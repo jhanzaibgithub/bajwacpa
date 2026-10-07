@@ -9,7 +9,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /** Bump when the seeded designs change so pages that were never edited are refreshed. */
-define( 'BAJWA_DESIGNED_CONTENT_VERSION', 7 );
+define( 'BAJWA_DESIGNED_CONTENT_VERSION', 12 );
 
 /** Designed page keys mapped to their content source file and page lookup. */
 function bajwa_designed_pages() {

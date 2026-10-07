@@ -3,7 +3,7 @@
 <header class="site-header">
 	<div class="utility"><div class="container utility__inner"><span>Trusted tax &amp; accounting advice across the GTA</span><div><a href="tel:4169070568">416-907-0568</a><span aria-hidden="true">•</span><a href="mailto:info@bajwacpa.com">info@bajwacpa.com</a></div></div></div>
 	<div class="container navbar">
-		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Bajwa CPA home"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bajwa-logo.png' ) ); ?>" width="250" height="68" alt="Bajwa CPA Professional Corporation"></a>
+		<a class="brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="Bajwa CPA home"><img class="brand__logo skip-lazy no-lazy" data-no-lazy="1" data-skip-lazy="1" loading="eager" decoding="sync" fetchpriority="high" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/bajwa-logo.png' ) ); ?>" width="250" height="68" alt="Bajwa CPA Professional Corporation"></a>
 		<button class="menu-toggle" type="button" aria-controls="primary-menu" aria-expanded="false"><span></span><span></span><span></span><span class="screen-reader-text">Open menu</span></button>
 		<nav class="primary-nav" aria-label="Primary navigation"><?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false, 'menu_id' => 'primary-menu', 'fallback_cb' => 'bajwa_fallback_menu' ) ); ?></nav>
 		<a class="button button--navy navbar__cta" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Let's talk</a>
